@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+url = "https://jsonplaceholder.typicode.com/posts/";
+/*
+這樣部會直接返回json data,返回的是一個對象，代表
+我們從服務器返回實際獲得訪問全縣的響應數據
+fetch(url)
+    .then(data => console.log(data))
+*/
+/*如果要得到json data必須調用一個方法*/
+fetch(url)
+    .then(response => response.json())
+    //.then(data => console.log(data))
+    .catch(error => console.log('BAD',error))
+
+</script>

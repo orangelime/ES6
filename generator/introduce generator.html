@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+//generator is a function that can be entered and exited multiple times
+//no focus so much on 'where we would use this'
+//just kind of focus on what the syntax look like and how a generator works
+function* numbers(){
+    
+}
+numbers();//{}
+console.log(numbers());//numbers _proto_:Generator
+
+function* numbers(){
+    yield;
+}
+const gen = numbers();
+gen.next();//{'done':false}
+gen.next();//{'done':true}
+</script>

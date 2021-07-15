@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+var primaryColors = [
+    {color:'red'},
+    {color:'yellow'},
+    {color:'blue'}
+];
+//第一個參數為[],第二個參數為primaryColors中的object
+primaryColors.reduce(function(previous,primaryColor){
+    previous.push(primaryColor.color);
+    return previous; //['red,'yellow','blue']
+},[]);
+
+/*
+given an array 
+var numbers = [1,1,2,3,4,4]
+your function should return
+[1,2,3,4]
+*/
+function unique(array) {
+    return array.reduce(function(arr,num){
+        if(arr.indexOf(num) === -1){
+            arr.push(array.find(function(n){
+                return n === num;
+            }));
+        }
+        return arr;
+    },[]);
+}
+</script>

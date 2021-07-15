@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+promise = new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        resolve();
+    },3000);
+    /*es5
+        var request = new XHTMLRequest()
+        //make request
+        request.onload = () => {
+            resolve();
+        }
+    */
+});
+
+promise
+    .then(() => console.log('finally fincished!'))
+    .then(() => console.log('i am running!'))
+    .catch(() => console.log('ohoh'))
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+//store shopping
+const engineeringTeam = {
+    size:3,
+    deparment:'Engineering',
+    lead:'Jill',
+    manager:'Alex',
+    engineer:'Dave'
+}
+//只要遍歷員工(人名)
+function* TeamIterator(team){
+    yield team.lead;
+    yield team.manager;
+    yield team.engineer;
+}
+const names = [];
+for(let name of TeamIterator(engineeringTeam)){
+    names.push(name);
+}
+names;//["Jill","Alex","Dave"]
+
+
+  
+  
+
+console.log(a)
+</script>

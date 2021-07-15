@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+function createBookshop(inventory){
+    return{
+        inventory,//es5 inventory:inventory
+        inventoryVlaue(){
+            return this.inventory.reduce((total,book) => totla + book.price,0);
+        },
+        priceForTitle(title){
+            return this.inventory.find(book => book.title === title).price;
+        }
+    };
+}
+const inventory = [
+    {title:'Harry Poter',price:10},
+    {title:'Eloquent Javascript',price:15}
+];
+const bookshop = createBookshop(inventory);
+bookshop.inventoryVlaue();
+bookshop.priceForTitle('Harry Potter');
+</script>

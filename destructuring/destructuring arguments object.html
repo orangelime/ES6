@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+var savedFiled = {
+    extension:'.jpg',
+    name:'repost',
+    size:14040
+};
+function fileSummary(file){
+    return `The file ${file.name}.${file.extension} is of size ${file.size}`;
+}
+fileSummary(savedFiled);
+
+//es6
+var savedFiled = {
+    extension:'.jpg',
+    name:'repost',
+    size:14040
+};
+function fileSummary({ name , extension , size }, { color }){
+    return `${color} The file ${name}.${extension} is of size ${size}`;
+}
+fileSummary(savedFiled,{color:'red'});
+</script>

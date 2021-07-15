@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+/*
+使用generators的例子
+reddit.com下方的評論，評論中有評論，而評論中的評論也有評論
+像樹狀一樣的節點
+*/
+class Comment{
+    constructor(content,children){
+        this.content = content;
+        this.children = children;
+    }
+}
+const children = [
+    new Comment('good comment',[]),
+    new Comment('bad comment',[]),
+    new Comment('meh',[])
+];
+const tree = new Comment('Great post!',children);
+tree;//{"content":"Great post!","children":[{"content":"good comment","children":[]},{"content":"bad comment","children":[]},{"content":"meh","children":[]}]}
+
+</script>

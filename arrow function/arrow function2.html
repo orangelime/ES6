@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+const team = {
+    members:['Jane','Bill'],
+    teamName:'Supermen',
+    teamSummary:function(){
+        //可加var that = this ${this.teamName}改成${that.teamName}
+        return this.members.map(function(member){
+            return `${member} is on team ${this.teamName}`;
+        });
+    }
+}
+team.teamSummary();//TypeError:Cannot read property 'teamName' of undefined
+//why? because ${this.teamName} 'this' is undefined
+
+const team = {
+    members:['Jane','Bill'],
+    teamName:'Supermen',
+    teamSummary:function(){
+        //this == team
+        return this.members.map((member) => {
+            return `${member} is on team ${this.teamName}`;
+        });
+    }
+}
+</script>

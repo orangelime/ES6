@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+var post = {
+    id:4,
+    title:'New Post'
+};
+var comments = [
+    {
+        postId:4,
+        content:'awesome post'
+    },
+    {
+        postId:3,
+        content:'it was ok'
+    },
+    {
+        postId:4,
+        content:'neat'
+    }
+];
+function commentsForPost(post,comments){
+    return comments.filter(function(comment){
+        return comment.postId === post.id;
+    });
+}
+commentsForPost(post,comments);
+//[{postId:4,content:'awesome post'},{postId:4,content:'neat'}]
+
+/*求解:
+var numbers = [10,20,30]
+var lessThanFifteen = reject(numbers,function(number){
+    return number > 15;
+});
+lessThanFifteen //[10]
+*/
+function reject(array, iteratorFunction) {
+    var numbers = array.filter(function(number){
+        return !iteratorFunction(number)
+    })
+    return numbers
+}
+</script>

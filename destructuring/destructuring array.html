@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+const companies = [
+    'Google',
+    'Facebook',
+    'Uber'
+];
+const [ name , name2 , name3 , name4 ] = companies;
+name;//Google
+name2;//Facebook
+name3;//Uber
+typeof name4;//undefined
+const { length } = companies;
+length;//3
+const { name } = companies; //no name property
+const [ name , ...rest ] = companies;
+rest;//["Facebook","Uber"]
+const [ name , name2 ,...rest ] = companies;
+name;//Google
+name2;//Facebook
+rest;//["Uber"]
+</script>

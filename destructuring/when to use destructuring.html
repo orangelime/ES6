@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+function signup(username,password,email,dateOfBirth,city){
+    //create new user
+}
+//other code
+//other code
+//other code
+//other code
+//other code
+//other code
+//other code
+
+signup('myname','mypassword','myemail@example.com','1/1/1955','New York');
+
+//destructuring
+//這樣就不用向上面一樣，呼叫function時也要按照順序
+function signup({password,email,dateOfBirth,city,username}){
+    //create new user
+}
+const user = {
+    username:'myname',
+    password:'mypassword',
+    email:'myemail@example.com',
+    dateOfBirth:'1/1/1955',
+    city:'New York'
+};
+signup(user);
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+//store shopping
+function* shopping{
+    //stuff in the sidewalk
+
+    //walking down the sidewalk
+
+    //go into the store with cash
+    const stuffFromStore = yield 'cash';
+
+    //walking to laundry place
+    const cleanClothes = yield 'laundry';
+
+    //walking back home
+    return[stuffFromStore,cleanClothes];
+
+}
+//stuff in the store
+const gen = shopping();//只是呼叫function,還沒執行function裡的code
+//leaving our house 從next()才開始執行funciton裡的code
+gen.next();//{"value":"cash","done":"false"} {"value":"laundry","done":"false"}
+//walk into the store
+//walking up and down the aisles.
+//purchase our stuff 
+//leaving the store with groceries
+gen.next('groceries');
+gen.next('clean clothes');//{"value":["groceries","clean clothes"],"done":"true"} 
+
+
+</script>

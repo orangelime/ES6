@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+const MathLibrary = {
+    calculateProduct(a,b){
+        return a * b;
+    },
+    multiply(a,b){
+        return a * b;
+    }
+};
+//es6
+const MathLibrary = {
+    calculateProduct(...rest){
+        //please use the multiply method instead
+        return this.multiply(...rest);
+    },
+    multiply(a,b){
+        return a * b;
+    }
+};
+</script>

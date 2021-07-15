@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+//input
+double([1,2,3])
+//output
+[2,4,6]
+
+//Ans
+const numbers = [1, 2, 3];
+
+function double([number,...rest]) {
+    return !number? [] : [number*2,...double(rest)];
+}
+</script>

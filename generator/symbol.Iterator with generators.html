@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+//如何將多個generators組合在一起
+const testingTeam = {
+    lead:'Amanda',
+    tester:'Bill',
+    /*
+    此堂課新增
+    [Symbol.iterator]是一個key，不是array，這是一個動態生成的key，使用大括號將其包裝起來，
+    ，這個key就跟上面的lead和tester一樣
+    如果object裡有[Symbol.iterator],它的值為指向的generator來進行迭代
+    [Symbol.iterator]的目的就是讓for循環在此之上進行迭代
+    */
+    [Symbol.iterator]:function* (){
+        yield this.lead;
+        yield this.tester;
+        yield 5;
+        yield this;////["Jill","Alex","Dave","Amanda","Bill",5,{"lead":"Amanda","tester":"Bill"}]
+    }
+};
+const engineeringTeam = {
+    //testingTeam:testingTeam
+    testingTeam,//將重複的key值移到頂部
+    size:3,
+    deparment:'Engineering',
+    lead:'Jill',
+    manager:'Alex',
+    engineer:'Dave',
+};
+
+//只要遍歷兩個team的員工(人名)
+function* TeamIterator(team){
+    yield team.lead;
+    yield team.manager;
+    yield team.engineer;
+    /*const testingTeamGenerator = TestingTeamIterator(team.testingTeam);
+    yield* testingTeamGenerator;*/
+    yield team.testingTeam;
+}
+/*function* TestingTeamIterator(team){
+    yield team.lead;
+    yield team.tester;
+}*/
+const names = [];
+for(let name of TeamIterator(engineeringTeam)){
+    names.push(name);
+}
+names;//["Jill","Alex","Dave","Amanda","Bill"]
+</script>

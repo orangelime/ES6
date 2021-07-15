@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+var expense = {
+    type:'Business',
+    amount:'$45 USD'
+};
+var type = expense.type;
+var amount = expense.amount;
+
+//es6
+const { type } = expense;
+const { amount } = expense;
+
+//再簡寫
+const { type , amount } = expense;
+type;//Business
+amount;//$45 USD
+
+//不能使用還未定義的名稱
+const { type , amount , cost } = expense;
+typeof cost //undefined
+type;//Business
+amount;//$45 USD
+</script>

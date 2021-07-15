@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+function makeAjaxRequest(url,method){
+    if(!method){
+        method = 'GET';
+    }
+    //logic to make the request
+}
+makeAjaxRequest('google.com');
+makeAjaxRequest('google.com','GET');
+
+//es6
+function makeAjaxRequest(url,method='GET'){
+    return method;
+    //logic to make the request
+}
+makeAjaxRequest('google.com');//GET
+makeAjaxRequest('google.com','POST');//POST
+makeAjaxRequest('google.com',null);//沒有返回值
+makeAjaxRequest('google.com',undefined);//GET
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+const defaultColors = ['red','green'];
+const userFavoriteColors = ['orange','yellow'];
+defaultColors.concat(userFavoriteColors);//['red','green','orange','yellow']
+
+//es6
+const defaultColors = ['red','green'];
+const userFavoriteColors = ['orange','yellow'];
+const fallColors = ['fire red','fall orange'];
+[...defaultColors,...userFavoriteColors];//['red','green','orange','yellow']
+[...fallColors,...defaultColors,...userFavoriteColors];//['fire red','fall orange','red','green','orange','yellow']
+['blue',...fallColors,...defaultColors,...userFavoriteColors];//['blue','fire red','fall orange','red','green','orange','yellow']
+
+
+function validateShoppoingList(...items){
+    if(items.indexOf('milk') < 0){
+        return ['milk',...items];
+    }
+    return items;
+}
+validateShoppoingList('oranges','bread','eggs');
+//['milk','oranges','bread','eggs']
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+class Car{
+    constructor({title}){
+        this.title = title;
+    }
+    /*不必加上逗號*/
+    drive(){
+        return 'vroom';
+    }
+}
+
+class Toyota{
+    constructor({color}){
+        this.color = color;
+    }
+    honk(){
+        return 'beep'
+    }
+}
+const toyota = new Toyota({color:'red'});
+toyota.honk();//beep
+toyota;//{color:'red'}
+toyota.drive();//TypeError: toyota.drive is not a function
+
+/*extends*/
+class Toyota extends Car{
+    constructor(options){
+        super(options);//Car.constructor()
+        this.color = options.color;
+    }
+    honk(){
+        return 'beep'
+    }
+}
+const Toyota = new Toyota({color:'red',title:'Daily Driver'});
+toyota.drive();//vroom
+toyota.honk();//beep
+toyota;//{color:'red',title:'Daily Driver'}
+</script>

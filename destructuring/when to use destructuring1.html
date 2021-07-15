@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+const points = [
+    [4,5],
+    [10,1],
+    [0,40]
+];
+
+[
+    {x:4,y:5},
+    {x:10,y:1},
+    {x:0,y:40}
+]
+
+//es6 
+points.map((pair) => {
+    const [ x , y ] = pair;
+})
+//再改寫
+points.map(([ x , y ]) => {
+    return {x:x,y:y};
+})
+//再改寫
+points.map(([ x , y ]) => {
+    return { x , y };//[{x:4,y:5},{x:10,y:1},{x:0,y:40}]
+})
+</script>

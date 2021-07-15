@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+function Car(model){
+    this.model = model;
+}
+var cars = [
+    new Car('Buick'),
+    new Car('Camaro'),
+    new Car('Focus')
+]
+cars.find(function(car){
+    return car.model = 'Focus';//{'model':'Focus'}
+})
+
+
+var posts = [
+    {id:1,title:'New Post'},
+    {id:2,title:'Old Post'}
+];
+var comment = {postId:1,content:'Great Post'};
+function postForComment(post,comment){
+    return posts.find(function(post){
+        return post.id === comment.postId;
+    });
+}
+postForComment(post,comment);//{id:1,title:'New Post'}
+
+//example
+const posts = [
+    {id:1,title:'Post title'},
+    {id:2,title:'Post title'},
+    {id:3,title:'Post title'},
+    {id:4,title:'Post title'},
+    {id:5,title:'Post title'},
+    {id:6,title:'Post title'},
+];
+const postId = getIdFromURL();
+posts.find(post => post.id === postId);
+
+/*練習3*/
+var ladders = [
+    { id: 1, height: 20 },
+    { id: 3, height: 25 }
+];
+findWhere(ladders, { height: 25 });
+function findWhere(array, criteria) {
+    let property = Object.keys(criteria)[0];
+    return array.find(function(arr) {
+        return arr[property] === criteria[property];
+    });
+}
+
+</script>

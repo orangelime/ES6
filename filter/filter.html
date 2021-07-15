@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+var products = [
+    {
+        name:'cucumber',
+        type:'vegetable'
+    },
+    {
+        name:'banana',
+        type:'fruit'
+    },
+    {
+        name:'celery',
+        type:'vegetable'
+    },
+    {
+        name:'orange',
+        type:'fruit'
+    }
+]
+var filterProducts = [];
+for(var i=0;i<products.length;i++){
+    if(products[i].type === 'fruit'){
+        filterProducts.push(products[i]);
+    }
+}
+filterProducts;//[{name:'banana',type:'fruit'},{name:'orange',type:'fruit'}]
+
+products.filter(function(product){
+    return product.type === 'vegetable';
+    //[{name:'cucumber',type:'vegetable'},{name:'celery',type:'vegetable'}]
+});
+</script>

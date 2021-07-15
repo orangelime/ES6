@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+class Car{
+    constructor({title}){
+        this.title = title;
+    }
+    /*constructor(options){
+        this.title = options.title
+    }*/
+    drive(){
+        return 'vroom';
+    }
+}
+const cat = new Car({title:'Toyota'});
+car;//{title:'Toyota'}
+car.drive();//vroom
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+    //讓不對稱的括號變成對稱
+function balancedParens(string){
+    return !string.split("").reduce(function(previous,char){
+        //balancedParens(")(") ouput true
+        if(previous < 0){
+            return previous;
+        }
+        if(char === '('){
+            return ++previous;
+        }
+        if(char === ')'){
+            return --previous;
+        }
+        return previous;
+    },0);
+}
+//return string.split("") output ["(","(","(","("]
+//initial value設置為0，每次看到右括號時就將計數器-1，
+//每次看到左括號時，就將計數器+1
+//如果運行完計數器>1則為不對稱
+//下面ouput為4 轉為boolean 在string.split("")加!
+balancedParens("((((");//無對稱的括號
+
+
+</script>

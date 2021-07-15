@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+//generator is a function that can be entered and exited multiple times
+//no focus so much on 'where we would use this'
+//just kind of focus on what the syntax look like and how a generator works
+function* numbers(){
+    
+}
+numbers();//{}
+console.log(numbers());//numbers _proto_:Generator
+
+function* numbers(){
+    yield;
+}
+const gen = numbers();
+gen.next();//{'done':false}
+gen.next();//{'done':true}
+
+/*if no yield*/
+function* numbers(){
+    //yield;
+}
+const gen = numbers();
+gen.next();//{'done':true}
+gen.next();//{'done':true}
+
+
+//store shopping
+function* shopping{
+    //stuff in the sidewalk
+
+    //walking down the sidewalk
+
+    //go into the store with cash
+    const stuffFromStore = yield 'cash';
+
+    //walking back home
+    return stuffFromStore;
+}
+//stuff in the store
+const gen = shopping();//只是呼叫function,還沒執行function裡的code
+//leaving our house 從next()才開始執行funciton裡的code
+gen.next();//{"value":"cash","done":"false"}
+//walk into the store
+//walking up and down the aisles.
+//purchase our stuff 
+//leaving the store with groceries
+gen.next('groceries');////{"value":"groceries","done":"true"} 
+
+
+//其他人的講解
+// GENERATORS
+// intro
+// basic example using Shopping as a code metaphor:
+// 1. We leave our home
+// 2. Go shopping
+// 3. yield cash...
+// 4. ...in exchange for groceries
+// 5. return home with groceries
+ 
+// Now follow the numbers below to see sequence of code execution
+ 
+ 
+// 2. Go shopping
+// this generator does not execute until '1. We leave our home' (below)
+function* shopping() {
+ 
+ // 3. yield cash...
+ // yield keyword exits this generator 
+ // and jumps to '4. ...in exchange for groceries' (below)
+ const stuffFromStore = yield 'cash'; 
+
+ // 5. return home with groceries
+ return stuffFromStore; // walking back home on the sidewalk
+}
+
+// name our shopping() generator 'gen'
+const gen = shopping();
+
+// 1. We leave our home
+// begins executing code in our shopping() generator 
+gen.next(); // jump to '2. Go Shopping'
+
+// 4. ...in exchange for groceries
+// jumped here from '3. yield cash...'
+gen.next('groceries'); // jump back to '5. return home with groceries' 
+
+
+/* Explanation:
+// 1. We leave our home -- first gen.next()
+// 2. Go shopping -- begin function* shopping() generator
+// 3. yield cash... -- const stuffFromStore = yield 'cash'
+// 4. ...in exchange for groceries -- gen.next('groceries');
+// 5. return home with groceries -- return stuffFromStore;
+
+So the way it works is like this:
+- the yield keyword works in conjunction with the .next() methods
+ - the first .next() begins the generator function
+ - the yield keyword yields 'cash' and exits the generator to jump to the next .next() method
+ - the .next() method provides the arguement 'groceries' and jumps back into the generator where it left off
+- the generator returns stuffFromStore
+
+In other words, the yield exchanged 'cash' and the .next('groceries') gave us back the groceries for the 'cash'.
+- initially stuffFromstore was = yield 'cash'
+- by the end of the generator it returned stuffFromStore = 'groceries'
+</script>

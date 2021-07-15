@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+//store shopping
+//如何將多個generators組合在一起
+const testingTeam = {
+    lead:'Amanda',
+    tester:'Bill'
+};
+const engineeringTeam = {
+    //testingTeam:testingTeam
+    testingTeam,//將重複的key值移到頂部
+    size:3,
+    deparment:'Engineering',
+    lead:'Jill',
+    manager:'Alex',
+    engineer:'Dave',
+};
+
+//只要遍歷兩個team的員工(人名)
+function* TeamIterator(team){
+    yield team.lead;
+    yield team.manager;
+    yield team.engineer;
+    const testingTeamGenerator = TestingTeamIterator(team.testingTeam);
+    yield* testingTeamGenerator;
+}
+function* TestingTeamIterator(team){
+    yield team.lead;
+    yield team.tester;
+}
+const names = [];
+for(let name of TeamIterator(engineeringTeam)){
+    names.push(name);
+}
+names;//["Jill","Alex","Dave","Amanda","Bill"]
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+const double = function(number){
+    return 2 * number;
+}
+double(8);
+
+const double = (number) => 2 * number;
+//只有一個argument的話可以直接省略括號
+const double = number => 2 * number;
+//兩個argument的話還是要加括號
+const double = (number1,number2) => 2 * number1 + 5 * number2;
+//沒有argument的話要加括號
+const double = () => 2;
+
+const numbers = [1,2,3];
+numbers.map(function(number){
+    return 2 * number;
+})
+numbers.map(number => 2 * number);
+</script>

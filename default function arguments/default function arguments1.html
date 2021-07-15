@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+function User(id){
+    this.id = id;
+}
+function generateId(){
+    return Math.random() * 999999;
+}
+function createAdminUser(user){
+    user.admin = true;
+    return user;
+}
+createAdminUser(new User(generateId()));
+
+//es6
+function User(id){
+    this.id = id;
+}
+function generateId(){
+    return Math.random() * 999999;
+}
+function createAdminUser(user = newUser(generateId())){
+    user.admin = true;
+    return user;
+}
+createAdminUser();
+//最後一行也可以這樣寫
+const user = new User(generateId());
+createAdminUser(user);
+</script>

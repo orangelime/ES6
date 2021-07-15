@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+function Car(options){
+    this.title = options.title;
+}
+
+Car.prototype.drive = function(){
+    return 'vroom';
+}
+
+function Toyota(options){
+    this.color = options.color;
+}
+
+const toyota = new Toyota({color:'red',title:'Daily Driver'});
+toyota;//{color:'red'}
+
+//es6
+function Toyota(options){
+    Car.call(this,options)
+    this.color = options.color;
+}
+Toyota.prototype = object.create(Car.prototype);
+Toyota.prototype.constructor = Toyota;
+Toyota.prototype.honk = function(){
+    return 'beep';
+}
+const toyota = new Toyota({color:'red',title:'Daily Driver'});
+toyota;//{color:'red',title:'Daily Driver'}
+toyota.drive();//vroom
+toyota.honk();//beep
+</script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<div></div>
+<script>
+//如何將多個generators組合在一起
+const testingTeam = {
+    lead:'Amanda',
+    tester:'Bill',
+    /*
+    57此堂課新增
+    [Symbol.iterator]是一個key，不是array，這是一個動態生成的key，使用大括號將其包裝起來，
+    ，這個key就跟上面的lead和tester一樣
+    如果object裡有[Symbol.iterator],它的值為指向的generator來進行迭代
+    [Symbol.iterator]的目的就是讓for循環在此之上進行迭代
+    */
+    [Symbol.iterator]:function* (){
+        yield this.lead;
+        yield this.tester;
+        yield 5;
+        yield this;////["Jill","Alex","Dave","Amanda","Bill",5,{"lead":"Amanda","tester":"Bill"}]
+    }
+};
+const engineeringTeam = {
+    //testingTeam:testingTeam
+    testingTeam,//將重複的key值移到頂部
+    size:3,
+    deparment:'Engineering',
+    lead:'Jill',
+    manager:'Alex',
+    engineer:'Dave',
+    /*58此堂課新增*/
+    [Symbol.iterator]:function* (){
+        yield this.lead;
+        yield this.manager;
+        yield this.engineer;
+        /*
+        如果yield後面加了*號，表示這邊有另一個東西需要進行迭代
+        請找到該對象並對其進行迭代
+        */
+        yield* this.engineeringTeam;
+
+    }
+};
+
+//只要遍歷兩個team的員工(人名)
+/*58
+function* TeamIterator(team){
+    yield team.lead;
+    yield team.manager;
+    yield team.engineer;
+    //const testingTeamGenerator = TestingTeamIterator(team.testingTeam);
+    //yield* testingTeamGenerator;
+    yield team.testingTeam;
+}*/
+/*57
+function* TestingTeamIterator(team){
+    yield team.lead;
+    yield team.tester;
+}*/
+const names = [];
+/*58
+for(let name of TeamIterator(engineeringTeam)){
+    names.push(name);
+}*/
+/*58改成*/
+for(let name of engineeringTeam){
+    names.push(name);
+}
+names;//["Jill","Alex","Dave","Amanda","Bill"]
+</script>
